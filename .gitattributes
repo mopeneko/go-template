@@ -1,1 +1,2 @@
 go_template/version.py export-subst
+go_template/_version.py export-subst
