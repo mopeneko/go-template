@@ -7,6 +7,8 @@ python:
 
 install:
   - pip install -r setup_requirements.txt
+  - sudo apt install -y golang-go
+  - python setup.py install
 
 script:
   - python -m unittest discover
