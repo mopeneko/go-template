@@ -1,6 +1,5 @@
 package main
 
-// #include <Python.h>
 import "C"
 
 import (

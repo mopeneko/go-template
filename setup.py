@@ -1,6 +1,24 @@
 from setuptools import Extension, find_packages, setup
+from setuptools.command.install import install
+from subprocess import check_call
 
 import versioneer
+
+
+cmdclass = versioneer.get_cmdclass()
+
+
+class Install(install):
+    @staticmethod
+    def _post_install():
+        check_call(["bash", "build.sh"])
+
+    def run(self):
+        self._post_install()
+        install.run(self)
+
+
+cmdclass["install"] = Install
 
 
 def install_deps():
@@ -56,11 +74,6 @@ setup(
         "License :: OSI Approved :: MIT License",
     ],
     setup_requires=["wheel", "setuptools-golang"],
-    cmdclass=versioneer.get_cmdclass(),
-    build_golang={'root': "github.com/harsh-98/go-template"},
-    ext_modules=[
-        Extension(
-            "template", ["go_template/bind/template.go"]
-        )
-    ],
+    cmdclass=cmdclass,
+    include_package_data=True,
 )
