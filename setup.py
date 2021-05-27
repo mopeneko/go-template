@@ -1,6 +1,23 @@
+import versioneer
 from setuptools import setup, find_packages
+from setuptools.command.install import install
+from subprocess import check_call
 
-import go_template
+
+cmdclass = versioneer.get_cmdclass()
+
+
+class Install(install):
+    @staticmethod
+    def _post_install():
+        check_call(["bash", "build.sh"])
+
+    def run(self):
+        self._post_install()
+        install.run(self)
+
+
+cmdclass["install"] = Install
 
 
 def install_deps():
@@ -31,7 +48,7 @@ def readme():
 
 setup(
     name="go-template",
-    version=go_template.__version__,
+    version=versioneer.get_version(),
     packages=find_packages(exclude=("tests",)),
     description="python bindings for go template",
     author="harsh",
@@ -56,4 +73,5 @@ setup(
         "License :: OSI Approved :: MIT License",
     ],
     setup_requires=["wheel"],
+    cmdclass=cmdclass,
 )
