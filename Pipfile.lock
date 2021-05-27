@@ -1,0 +1,29 @@
+{
+    "_meta": {
+        "hash": {
+            "sha256": "b7e9a7a5cd158fa43223f6ec15a951e31a33d348ae93d983e3f2815aa6752cdc"
+        },
+        "pipfile-spec": 6,
+        "requires": {
+            "python_version": "3.9"
+        },
+        "sources": [
+            {
+                "name": "pypi",
+                "url": "https://pypi.org/simple",
+                "verify_ssl": true
+            }
+        ]
+    },
+    "default": {
+        "setuptools-golang": {
+            "hashes": [
+                "sha256:0ac7785b30ee07e820fa799ef4f9e56851888416af01ad619127c97e84f1d085",
+                "sha256:29106a640d66a52b9a0fb78d101363242fbcbd0b338ef70aa0ad7a5a6b1a5c4e"
+            ],
+            "index": "pypi",
+            "version": "==2.4.0"
+        }
+    },
+    "develop": {}
+}

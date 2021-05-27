@@ -1,23 +1,6 @@
+from setuptools import Extension, find_packages, setup
+
 import versioneer
-from setuptools import setup, find_packages
-from setuptools.command.install import install
-from subprocess import check_call
-
-
-cmdclass = versioneer.get_cmdclass()
-
-
-class Install(install):
-    @staticmethod
-    def _post_install():
-        check_call(["sh", "build.sh"])
-
-    def run(self):
-        self._post_install()
-        install.run(self)
-
-
-cmdclass["install"] = Install
 
 
 def install_deps():
@@ -72,6 +55,12 @@ setup(
         "Programming Language :: Python :: 3.7",
         "License :: OSI Approved :: MIT License",
     ],
-    setup_requires=["wheel"],
-    cmdclass=cmdclass,
+    setup_requires=["wheel", "setuptools-golang"],
+    cmdclass=versioneer.get_cmdclass(),
+    build_golang={'root': "github.com/harsh-98/go-template"},
+    ext_modules=[
+        Extension(
+            "template", ["go_template/bind/template.go"]
+        )
+    ],
 )
