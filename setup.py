@@ -10,7 +10,7 @@ cmdclass = versioneer.get_cmdclass()
 class Install(install):
     @staticmethod
     def _post_install():
-        check_call(["bash", "build.sh"])
+        check_call(["sh", "build.sh"])
 
     def run(self):
         self._post_install()
