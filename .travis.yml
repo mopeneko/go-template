@@ -13,6 +13,7 @@ install:
   - sudo apt update
   - sudo apt install -y golang-1.16-go
   - export PATH=/usr/lib/go-1.16/bin:$PATH
+  - export GOROOT=/usr/lib/go-1.16
   - python setup.py install
 
 script:
