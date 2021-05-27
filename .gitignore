@@ -99,3 +99,5 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+go_template/bind/template.{h,so}
