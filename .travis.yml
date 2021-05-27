@@ -12,7 +12,7 @@ install:
   - sudo add-apt-repository -y ppa:longsleep/golang-backports
   - sudo apt update
   - sudo apt install -y golang-1.16-go
-  - GOROOT=$(go1.16 env GOROOT) python setup.py install
+  - GOROOT=/usr/lib/go-1.16 python setup.py install
 
 script:
   - python -m unittest discover
