@@ -100,4 +100,5 @@ ENV/
 # mypy
 .mypy_cache/
 
-go_template/bind/template.{h,so}
+go_template/bind/template.h
+go_template/bind/template.so
