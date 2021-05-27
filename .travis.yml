@@ -1,5 +1,7 @@
 sudo: false
 
+dist: focal
+
 language: python
 
 python:
